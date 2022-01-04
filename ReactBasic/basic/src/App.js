@@ -1,13 +1,10 @@
 import './App.css';
 import FirstComponent from './FirstComponent';
+import Say from './Say';
 
 function App() {
   /* return <FirstComponent /> */
-  return <div>
-    <FirstComponent name = "react" > 
-    children!! 
-    </FirstComponent>
-  </div>
+  return <Say />
 };
 
 export default App;
