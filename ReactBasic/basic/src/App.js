@@ -1,25 +1,20 @@
-import logo from './logo.svg';
+import { Component } from 'react';
 import './App.css';
+import ScrollBox from './ScrollBox';
+// import EventPractice from './EventPractice';
+// import FirstComponent from './FirstComponent';
+// import Say from './Say';
+//import ValidationSample from './ValidationSample';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render(){
+    return(
+      <div>
+        <ScrollBox ref = {(ref) => this.ScrollBox = ref}/>
+        <button onClick = {() => this.ScrollBox.scrollToBottom()}> 맨 밑으로 </button>
+      </div>
+    );
+  }
 }
 
 export default App;
