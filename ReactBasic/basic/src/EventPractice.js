@@ -6,20 +6,20 @@ class EventPractice extends Component{
         message : 'gogo'
     }
 
-    constructor(props){
-        super(props);
-        this.handleChange = this.handleChange.bind(this);
-        this.handleClick = this.handleClick.bind(this);
-    }
+    // constructor(props){
+    //     super(props);
+    //     this.handleChange = this.handleChange.bind(this);
+    //     this.handleClick = this.handleClick.bind(this);
+    // }
 
-    handleChange(e){
+    handleChange = (e) => {
         // 입력받은 내용으로 state를 변경
         this.setState({
             message : e.target.value
         })
     }
 
-    handleClick(){
+    handleClick = () => {
         // click 시 state를 출력 후 state값 초기화
         alert(this.state.message);
         this.setState({
@@ -37,7 +37,7 @@ class EventPractice extends Component{
                 placeholder = '아무거나 입력하세요'
                 value = {this.state.message}
                 onChange = {this.handleChange}/>
-                <button onClick={this.state.handleClick}>확인</button>
+                <button onClick={this.handleClick}>확인</button>
             </div>
         )
     }
