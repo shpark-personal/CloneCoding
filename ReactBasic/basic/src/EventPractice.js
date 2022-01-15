@@ -1,6 +1,11 @@
 import {Component} from 'react'
 
 class EventPractice extends Component{
+    
+    state = {
+        message : 'gogo'
+    }
+    
     render(){
         return (
             <div>
@@ -11,11 +16,21 @@ class EventPractice extends Component{
                 placeholder = '아무거나 입력하세요'
                 onChange = {
                     (e) =>{
-                        console.log(e);
-                        // 입력되는 과정이 실시간으로 기록됨
-                        //console.log(e.target.value);
+                        // 입력받은 내용으로 state를 변경
+                        this.setState({
+                            message : e.target.value
+                        })
                     }
                 }/>
+                <button onClick={
+                    () => {
+                        // click 시 state를 출력 후 state값 초기화
+                        alert(this.state.message);
+                        this.setState({
+                            message : ''
+                        });
+                    }
+                }>확인</button>
             </div>
         )
     }
