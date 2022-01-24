@@ -21,11 +21,16 @@ const IterationSample = () => {
         setNames(nextNames);
         setInputText('');
     }
+
+    const onRemove = id => {
+        const nextNames = names.filter(name => name.id !== id);
+        setNames(nextNames);
+    }
     
-    
-    const nameList = names.map(name => <li key = {name.id}>{name.text}</li>);
-    
-    
+    const nameList = names.map(name => 
+    <li key = {name.id} onDoubleClick={() => onRemove(name.id)}>
+        {name.text}
+        </li>);
     
     return (
     <>
