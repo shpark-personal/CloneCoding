@@ -1,10 +1,10 @@
 import './App.css';
-import SassComponent from './SassComponent.js';
+import CSSModule from './CssModule';
 
-function App() {
+const App = () => {
   return (
     <div>
-      <SassComponent />
+      <CSSModule />
     </div>
   );
 }
