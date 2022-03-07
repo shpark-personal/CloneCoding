@@ -1,6 +1,5 @@
 import React from 'react';
-import classNames from 'classnames/bind';
-import styles from './CSSModule.module.scss';
+import styles from './CssModule.module.scss';
 
 const CSSModule = () => {
   return (
