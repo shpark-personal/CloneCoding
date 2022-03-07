@@ -1,10 +1,10 @@
 import './App.css';
-import CSSModule from './CssModule';
+import StyledComponent from './StyledComponent';
 
 const App = () => {
   return (
     <div>
-      <CSSModule />
+      <StyledComponent />
     </div>
   );
 }
