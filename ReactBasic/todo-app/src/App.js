@@ -34,14 +34,13 @@ const App = () => {
     [todos]);
   
   const onRemove = useCallback(
-    id => {setTodos(todos.filter(todo => todo.id !== id));
-    },
-  [todos]);
+    id => {setTodos(todos => todos.filter(todo => todo.id !== id));
+    },[]);
 
   const onToggle = useCallback(
     id => {
-      setTodos(todos.map(todo => todo.id === id ? {...todo, checked: !todo.checked} : todo));
-    },[todos])
+      setTodos(todos => todos.map(todo => todo.id === id ? {...todo, checked: !todo.checked} : todo));
+    },[])
 
   return (
     <TodoTemplate> 
