@@ -1,5 +1,13 @@
 import React from 'react';
 import qs from 'qs';
+/*
+location :
+  {
+    "pathname" : "/about",
+    "search" : "?deetail=true",
+    "hash" : ""
+  }
+*/
 
 const About = ({ location }) => {
   const query = qs.parse(location.search, {
