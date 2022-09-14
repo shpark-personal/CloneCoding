@@ -23,4 +23,4 @@ const ColorProvider = ({children}) => {
 const {Consumer: ColorConsumer } = ColorContext;
 export {ColorProvider, ColorConsumer};
 
-//export default ColorContext;
+export default ColorContext;
