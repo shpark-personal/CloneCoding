@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import Counter from '../components/Counter';
+import { increase, decrease } from '../modules/counter'; 
 
 const CounterContainer = ({number, increase, decrease}) => {
     return (
@@ -12,10 +13,10 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = dispatch => ({
     increase:() => {
-        console.log('increase');
+        dispatch(increase());
     },
     decrease:() => {
-        console.log('decrease');
+        dispatch(decrease());
     },
 });
 // connect( store안의 상태를 컴포넌트의 props로 넘겨주기 위해 사용하는 함수,
