@@ -1,4 +1,5 @@
 import {createAction, handleActions} from 'redux-actions';
+import produce from 'immer';
 
 // action type
 const CHANGE_INPUT = 'todos/CHANGE_INPUT';
@@ -39,10 +40,16 @@ export const remove = createAction(TOGGLE, id => id);
  // reducer 함수
  const todos = handleActions(
     {
-        [CHANGE_INPUT]: (state, {playload: input}) => ({...state, input}),
-        [INSERT]: (state, {playload: todo}) => ({ ...state, todos: state.todos.concat(todo)}),
-        [TOGGLE]: (state, {playload: id}) => ({...state, todos: state.todos.map(todo => todo.id === id ? {...todo, done: !todo.done} : todo)}),
-        [REMOVE]: (state, {playload: id}) => ({...state, todos:state.todos.filter(todo => todo.id !== id)})
+        [CHANGE_INPUT]: (state, {playload: input}) => produce(state, draft => {draft.input = input}),
+        [INSERT]: (state, {playload: todo}) => produce(state, draft => {draft.todos.push(todo)}),
+        [TOGGLE]: (state, {playload: id}) => produce(state, draft => {
+            const todo = draft.todos.find(todo => todo.id === id); 
+            todo.done = !todo.done;
+        }),
+        [REMOVE]: (state, {playload: id}) => produce(state, draft => {
+            const index = draft.todos.findIndex(todo => todo.id === id);
+            draft.todos.splice(index, 1);
+        })
     },
     initialState
  )
