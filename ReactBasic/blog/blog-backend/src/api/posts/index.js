@@ -8,4 +8,4 @@ posts.get('/:id', potsCtrl.read);
 posts.delete('/:id', potsCtrl.remove);
 posts.put('/:id', potsCtrl.replace);
 posts.patch('/:id', potsCtrl.update);
-module.exports = posts;
+export default posts;
