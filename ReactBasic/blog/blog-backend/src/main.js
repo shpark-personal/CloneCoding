@@ -5,6 +5,7 @@ import bodyParser from 'koa-bodyparser';
 import { connect } from 'mongoose';
 import api from './api';
 import createFakeData from './createFakeData';
+import jwtMiddleware from './lib/jwtMiddleware';
 
 
 // process.env s내부 값에 대한 레퍼런스 만들기
@@ -38,6 +39,7 @@ router.use('/api', api.routes());
 
 app.use(bodyParser());
 app.use(router.routes()).use(router.allowedMethods());
+app.use(jwtMiddleware);
 
 const port = PORT || 4000;
 app.listen(port, () => {
