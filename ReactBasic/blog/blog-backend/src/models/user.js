@@ -1,5 +1,6 @@
 import mongoose, {Schema} from 'mongoose';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 const UsesrSchema = new Schema({
     username: String,
@@ -20,10 +21,24 @@ UsesrSchema.statics.findByUsername = function(username){
     return this.findOne({username});
 }
 
-UsesrSchema.methods.esrialize = function(){
+UsesrSchema.methods.sesrialize = function(){
     const data = this.toJSON();
     delete data.hashedPassword;
     return data;
+}
+
+UsesrSchema.methods.generateToken = function(){
+    const token = jwt.sign(
+        {
+            _id: this.id,
+            usesrname: this.username
+        },
+        process.env.JWT_SECRET,
+        {
+            expiresIn: '7d'
+        }
+    );
+    return token;
 }
 
 const User = mongoose.model('User', UsesrSchema);
